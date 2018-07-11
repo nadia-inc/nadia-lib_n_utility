@@ -1,0 +1,33 @@
+{
+  "name": "gulp-starter-kit",
+  "version": "0.1.0",
+  "description": "n_utility",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nadia Inc.",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.37",
+    "@babel/polyfill": "^7.0.0-beta.37",
+    "@babel/preset-env": "^7.0.0-beta.37",
+    "babel-core": "^7.0.0-0",
+    "babel-loader": "^7.1.2",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "delete-empty": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-ignore": "^2.0.2",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-watch": "^4.3.11",
+    "imports-loader": "^0.8.0",
+    "run-sequence": "^2.0.0",
+    "vinyl-paths": "^2.1.0",
+    "webpack": "^3.10.0",
+    "webpack-stream": "^4.0.0"
+  }
+}
