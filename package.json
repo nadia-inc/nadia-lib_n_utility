@@ -4,7 +4,8 @@
   "description": "n_utility",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
+    "start": "gulp default",
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nadia Inc.",

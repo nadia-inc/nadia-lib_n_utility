@@ -1,6 +1,8 @@
 # n_utility
 FE用Javascriptまとめ。(徐々に追加中。)  
-`window.nUtility` の中に格納
+`window.nUtility` の中に格納。  
+`/dist/_assets/js/n_utility.js` を読み込んで使用する。  
+※webpackのsource-mapが入ってるので、使用するときは `npm run build`
 
 ## 動作要件
 All devices
@@ -29,7 +31,7 @@ nUtility.userAgent = {}
   isEdge: boolean
 }
 ```
-###USAGE
+### USAGE
 ```
 if( nUtility.userAgent.isIE || nUtility.userAgent.isEdge )
 { // ブラウザがIEもしくはEdgeの場合の処理
