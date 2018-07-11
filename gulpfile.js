@@ -42,22 +42,18 @@ gulp.task('browser-sync', function() {
 gulp.task('clean:dist', function() {
   return gulp.src([
     dir.dist + '/**/*.*',
-    '!' + dir.dist + '/_assets/css/**/*.*',
-    '!' + dir.dist + '/_assets/js/**/*.*',
-    '!' + dir.dist + '/_assets/images/**/*.*'
+    '!' + dir.dist + '/_assets/js/n_utility.js',
   ])
     .pipe(vinylPaths(del));
 });
 
 gulp.task('clean:scripts', function() {
-  return gulp.src([dir.dist + '/_assets/js/**/*.*'])
+  return gulp.src([
+    dir.dist + '/_assets/js/n_utility.js',
+  ])
     .pipe(vinylPaths(del));
 });
 
-gulp.task('clean:maps', function() {
-  return gulp.src([dir.dist + '/**/*.map'])
-    .pipe(vinylPaths(del));
-});
 
 gulp.task('delete-empty', function() {
   return deleteEmpty.sync(dir.dist);
@@ -66,9 +62,7 @@ gulp.task('delete-empty', function() {
 gulp.task('copy:src', function() {
   return gulp.src([
     dir.src + '/**/*.*',
-    '!' + dir.src + '/_assets/scss/**/*.scss',
-    '!' + dir.src + '/_assets/js/**/*.js',
-    '!' + dir.src + '/_assets/images/**/*.*'
+    '!' + dir.src + '/_assets/js/n_utility.js',
   ])
     .pipe(ignore.include({isFile: true}))
     .pipe(gulp.dest(dir.dist))
@@ -125,9 +119,7 @@ gulp.task('watch:scripts', function() {
 gulp.task('watch:src', function() {
   return watch([
     dir.src + '/**/*.*',
-    '!' + dir.src + '/_assets/scss/**/*.scss',
-    '!' + dir.src + '/_assets/js/**/*.js',
-    '!' + dir.src + '/_assets/images/**/*.*'
+    '!' + dir.src + '//_assets/js/n_utility.js'
   ], function() {
     return gulp.start(['copy']);
   });

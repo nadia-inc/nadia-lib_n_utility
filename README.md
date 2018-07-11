@@ -42,25 +42,21 @@ if( nUtility.userAgent.isIE || nUtility.userAgent.isEdge )
 ## nUtility.nScrollEvent
 windowのスクロールによってイベントを発火する関数。
 `nUtility.nScrollEvent.add(target)` で使用。  
-（今のところaddだけ）
-### USAGE
+（今のところaddだけ）  
+
+### nUtility.nScrollEvent.add
+#### 第一引数
+イベントを付加するターゲットを入れる。
 ```
-const target = document.getElementById('target');
-nUtility.nScrollEvent.add(target,{
-  eventOnce: false,
-  eventPosition: 0.5,
-  onEvent : function(obj){
-    // user event
-  },
-  onShow : function(obj){
-    // user event
-  },
-  onHide : function(obj){
-    // user event
-  }
-});
+nUtility.nScrollEvent.add(target,{})
+```
+配列、jQueryのでもOK
+```
+nUtility.nScrollEvent.add(document.getElementsByClassName('className'),{})
+nUtility.nScrollEvent.add($('.className'),{})
 ```
 
+#### 第二引数（object）
 - eventOnce: boolean (default:true)  
 すべてのイベントを1度だけにするかどうか。
 
@@ -78,3 +74,22 @@ nUtility.nScrollEvent.add(target,{
 
 - onHide (argument:target、default:null)  
 画面から非表示なった時に発火するイベント
+
+
+### USAGE
+```
+const target = document.getElementById('target');
+nUtility.nScrollEvent.add(target,{
+  eventOnce: false,
+  eventPosition: 0.5,
+  onEvent : function(obj){
+    // user event
+  },
+  onShow : function(obj){
+    // user event
+  },
+  onHide : function(obj){
+    // user event
+  }
+});
+```
