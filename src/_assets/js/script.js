@@ -9,8 +9,7 @@ nUtility.nScrollEvent.add(document.getElementsByClassName('list_10'),{
      */
     var target = obj;
     target.classList.add('active');
-    console.log(target);
-    console.log(obj,this);
+    console.dir(target);
   },
   onShow : function(obj){
     console.log('onShow');
@@ -40,7 +39,7 @@ nUtility.nScrollEvent.add(document.getElementsByClassName('list_common'),{
 });
 
 nUtility.nScrollEvent.add($('.testList li'),{
-  eventOnce: false,
+  eventOnce: true,
   eventPosition: 0.7,
   onEvent : function(obj){
     obj.style.backgroundColor = '#d5d5d5';
