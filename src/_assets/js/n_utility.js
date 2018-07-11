@@ -121,10 +121,15 @@
       const eventTargetH = eventTarget.offsetHeight;
 
       const windowH  = window.innerHeight;
-      const eventOffset = windowH * setting.eventPosition;
+      const eventOffset = {
+        top: windowH * setting.eventPosition,
+        bottom: windowH - windowH * setting.eventPosition
+      }
+
 
       let eventTargetY = eventTarget.offsetTop;
       let parent = eventTarget.offsetParent;
+
       while( parent && parent != document.body ){
 
         eventTargetY += parent.offsetTop ;
@@ -136,7 +141,10 @@
       const targetShowPos = eventTargetY - windowH;
       const targetHideTopPos = eventTargetY + eventTargetH;
       //onEvent
-      const targetEventPos = eventTargetY - windowH + eventOffset;
+      const targetEventPos ={
+        top: eventTargetY - windowH + eventOffset.top,
+        bottom: eventTargetY - windowH + eventOffset.bottom
+      };
       // targetが上下中心のposition
       const halfPosition = eventTargetY - windowH/2;
 
@@ -162,7 +170,7 @@
 
           if(setting.onShowDirection == 'bottom'){
             // 要素が下から出てきた場合
-            if(targetEventPos < scroll && !setting.evented)
+            if(targetEventPos[setting.onShowDirection] < scroll && !setting.evented)
             { // イベント発火
               setting.evented = true;
               if(setting.onEvent && typeOf(setting.onEvent) == 'function')
@@ -173,7 +181,7 @@
           }
           else{
             // 要素が上から出てきた場合
-            if(targetEventPos > scroll - eventTargetH && !setting.evented)
+            if(targetEventPos[setting.onShowDirection] > scroll - eventTargetH && !setting.evented)
             { // イベント発火
               setting.evented = true;
               if(setting.onEvent && typeOf(setting.onEvent) == 'function')
@@ -239,5 +247,23 @@ nUtility.nScrollEvent.add(document.getElementsByClassName('list_10'),{
     target.classList.remove('active');
   }
 });
+
+
+nUtility.nScrollEvent.add(document.getElementsByClassName('list_common'),{
+  eventOnce: false,
+  eventPosition: 0.2,
+  onEvent : function(obj){
+    obj.style.left = '50px';
+  },
+  onShow : function(obj){
+    obj.style.transition = '0.2s';
+    obj.style.position = 'relative';
+    obj.style.left = '0px';
+  },
+  onHide : function(obj){
+    obj.style.left = '0px';
+  }
+});
+
 
 console.log(window.nUtility.userAgent)
